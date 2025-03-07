@@ -1,57 +1,22 @@
 language: node_js
 
-dist: focal
+sudo: false
 
-# Remove this if using external Travis
-group: focal
-
-
-# After creating your SDK project from this template repository,
-# uncomment this section to enable builds on the appropriate node versions.
 node_js:
-- 18
-- 20
-
-# After creating your SDK project from this template repository,
-# remove the "echo" command from the "before_install" section below.
-before_install:
-# - echo -e "machine github.ibm.com\n  login $GITHUB_ACCESS_TOKEN" > ~/.netrc
-- node --version
-- npm --version
+  - 18
+  - 20
 
 script:
-- npm run build
-- npm run test-travis || travis_terminate 1
-- npm run lint
-- npm run check-packages
+  - npm --version
+  - npm run build
+  - npm run test-unit-travis || travis_terminate 1
+  - npm run lint
+  - npm run check-packages
 
-# After creating your SDK project from this template repository,
-# remove this entire "jobs" section as this is only applicable
-# to the template repo's travis build.
-# jobs:
-#   include:
-#     - stage: Run node template build
-#       node_js: 18
-#     - node_js: 20
-#     - stage: Run system test with template
-#       node_js: 18
-#       script:
-#         - |
-#           if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
-#             echo "Running Node System Test"
-#             git clone https://github.ibm.com/CloudEngineering/sdkgen-systest.git
-#             cd sdkgen-systest
-#             ./install_scripts/install_deps_ubuntu.sh
-#             ./setup_and_generate.sh -l ibm-node -t $TRAVIS_BRANCH -s -i tests -i apidocs
-#           else
-#             echo "Skipping systest stage for PR build..."
-#           fi
-
-# To enable semantic-release, uncomment this section.
 deploy:
-- provider: script
-  skip_cleanup: true
-  script: npx semantic-release
-  on:
-    node: 20
-    branch: main
+  - provider: script
+    skip_cleanup: true
+    script: npx semantic-release
+    on:
+      node: 18
+      branch: main

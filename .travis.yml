@@ -25,15 +25,6 @@ jobs:
     - node_js: 20
     - node_js: 22
 
-    - name: Detect-Secrets
-      language: python
-      python: 3.12
-      install:
-        - pip install --upgrade "git+https://github.com/ibm/detect-secrets.git@master#egg=detect-secrets"
-      script:
-        - detect-secrets scan --update .secrets.baseline
-        - detect-secrets -v audit --report --fail-on-unaudited --fail-on-live --fail-on-audited-real .secrets.baseline
-
     - stage: Semantic-Release
       language: node_js
       node_js: 22

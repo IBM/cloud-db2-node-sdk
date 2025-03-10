@@ -43,9 +43,7 @@ class Db2saasV1 extends BaseService {
 
   static PARAMETERIZED_SERVICE_URL: string = 'https://{region}.db2.saas.ibm.com/dbapi/v4';
 
-  private static defaultUrlVariables = new Map([
-    ['region', 'us-south'],
-  ]);
+  private static defaultUrlVariables = new Map([['region', 'us-south']]);
 
   /**
    * Constructs a service URL by formatting the parameterized service URL.
@@ -63,8 +61,8 @@ class Db2saasV1 extends BaseService {
    */
   static constructServiceUrl(providedUrlVariables: Map<string, string> | null): string {
     return constructServiceUrl(
-      Db2saasV1.PARAMETERIZED_SERVICE_URL, 
-      Db2saasV1.defaultUrlVariables, 
+      Db2saasV1.PARAMETERIZED_SERVICE_URL,
+      Db2saasV1.defaultUrlVariables,
       providedUrlVariables
     );
   }
@@ -149,7 +147,11 @@ class Db2saasV1 extends BaseService {
       'deployment_id': _params.deploymentId,
     };
 
-    const sdkHeaders = getSdkHeaders(Db2saasV1.DEFAULT_SERVICE_NAME, 'v1', 'getDb2SaasConnectionInfo');
+    const sdkHeaders = getSdkHeaders(
+      Db2saasV1.DEFAULT_SERVICE_NAME,
+      'v1',
+      'getDb2SaasConnectionInfo'
+    );
 
     const parameters = {
       options: {
@@ -291,8 +293,31 @@ class Db2saasV1 extends BaseService {
     params: Db2saasV1.PostDb2SaasUserParams
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessUserResponse>> {
     const _params = { ...params };
-    const _requiredParams = ['xDeploymentId', 'id', 'iam', 'ibmid', 'name', 'password', 'role', 'email', 'locked', 'authentication'];
-    const _validParams = ['xDeploymentId', 'id', 'iam', 'ibmid', 'name', 'password', 'role', 'email', 'locked', 'authentication', 'headers'];
+    const _requiredParams = [
+      'xDeploymentId',
+      'id',
+      'iam',
+      'ibmid',
+      'name',
+      'password',
+      'role',
+      'email',
+      'locked',
+      'authentication',
+    ];
+    const _validParams = [
+      'xDeploymentId',
+      'id',
+      'iam',
+      'ibmid',
+      'name',
+      'password',
+      'role',
+      'email',
+      'locked',
+      'authentication',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -492,7 +517,15 @@ class Db2saasV1 extends BaseService {
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessUpdateAutoScale>> {
     const _params = { ...params };
     const _requiredParams = ['xDbProfile'];
-    const _validParams = ['xDbProfile', 'autoScalingEnabled', 'autoScalingThreshold', 'autoScalingOverTimePeriod', 'autoScalingPauseLimit', 'autoScalingAllowPlanLimit', 'headers'];
+    const _validParams = [
+      'xDbProfile',
+      'autoScalingEnabled',
+      'autoScalingThreshold',
+      'autoScalingOverTimePeriod',
+      'autoScalingPauseLimit',
+      'autoScalingAllowPlanLimit',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -605,7 +638,11 @@ class Db2saasV1 extends BaseService {
       'dbm': _params.dbm,
     };
 
-    const sdkHeaders = getSdkHeaders(Db2saasV1.DEFAULT_SERVICE_NAME, 'v1', 'postDb2SaasDbConfiguration');
+    const sdkHeaders = getSdkHeaders(
+      Db2saasV1.DEFAULT_SERVICE_NAME,
+      'v1',
+      'postDb2SaasDbConfiguration'
+    );
 
     const parameters = {
       options: {
@@ -648,7 +685,11 @@ class Db2saasV1 extends BaseService {
       return Promise.reject(_validationErrors);
     }
 
-    const sdkHeaders = getSdkHeaders(Db2saasV1.DEFAULT_SERVICE_NAME, 'v1', 'getDb2SaasTuneableParam');
+    const sdkHeaders = getSdkHeaders(
+      Db2saasV1.DEFAULT_SERVICE_NAME,
+      'v1',
+      'getDb2SaasTuneableParam'
+    );
 
     const parameters = {
       options: {
@@ -1866,25 +1907,35 @@ namespace Db2saasV1 {
     /** Configures whether DB2's self-tuning memory manager (STMM) is enabled. */
     DB2STMM?: CreateCustomSettingsRegistry.Constants.DB2Stmm | string;
     /** Configures the alternate authorization behavior for DB2. */
-    DB2_ALTERNATE_AUTHZ_BEHAVIOUR?: CreateCustomSettingsRegistry.Constants.DB2AlternateAuthzBehaviour | string;
+    DB2_ALTERNATE_AUTHZ_BEHAVIOUR?:
+      | CreateCustomSettingsRegistry.Constants.DB2AlternateAuthzBehaviour
+      | string;
     /** Configures how DB2 handles anti-joins. */
     DB2_ANTIJOIN?: CreateCustomSettingsRegistry.Constants.DB2Antijoin | string;
     /** Configures whether DB2 asynchronous table scanning (ATS) is enabled. */
     DB2_ATS_ENABLE?: CreateCustomSettingsRegistry.Constants.DB2AtsEnable | string;
     /** Configures whether deferred prepare semantics are enabled in DB2. */
-    DB2_DEFERRED_PREPARE_SEMANTICS?: CreateCustomSettingsRegistry.Constants.DB2DeferredPrepareSemantics | string;
+    DB2_DEFERRED_PREPARE_SEMANTICS?:
+      | CreateCustomSettingsRegistry.Constants.DB2DeferredPrepareSemantics
+      | string;
     /** Configures whether uncommitted data is evaluated by DB2. */
     DB2_EVALUNCOMMITTED?: CreateCustomSettingsRegistry.Constants.DB2Evaluncommitted | string;
     /** Configures extended optimization in DB2 (not specified in values). */
     DB2_EXTENDED_OPTIMIZATION?: string;
     /** Configures the default percentage of free space for DB2 indexes. */
-    DB2_INDEX_PCTFREE_DEFAULT?: CreateCustomSettingsRegistry.Constants.DB2IndexPctfreeDefault | string;
+    DB2_INDEX_PCTFREE_DEFAULT?:
+      | CreateCustomSettingsRegistry.Constants.DB2IndexPctfreeDefault
+      | string;
     /** Configures whether in-list queries are converted to nested loop joins. */
     DB2_INLIST_TO_NLJN?: CreateCustomSettingsRegistry.Constants.DB2InlistToNljn | string;
     /** Configures whether DB2 minimizes list prefetching for queries. */
-    DB2_MINIMIZE_LISTPREFETCH?: CreateCustomSettingsRegistry.Constants.DB2MinimizeListprefetch | string;
+    DB2_MINIMIZE_LISTPREFETCH?:
+      | CreateCustomSettingsRegistry.Constants.DB2MinimizeListprefetch
+      | string;
     /** Configures the number of entries for DB2 object tables. */
-    DB2_OBJECT_TABLE_ENTRIES?: CreateCustomSettingsRegistry.Constants.DB2ObjectTableEntries | string;
+    DB2_OBJECT_TABLE_ENTRIES?:
+      | CreateCustomSettingsRegistry.Constants.DB2ObjectTableEntries
+      | string;
     /** Configures whether DB2's optimizer profile is enabled. */
     DB2_OPTPROFILE?: CreateCustomSettingsRegistry.Constants.DB2Optprofile | string;
     /** Configures the logging of optimizer statistics (not specified in values). */
@@ -1902,11 +1953,17 @@ namespace Db2saasV1 {
     /** Configures whether DB2 skips inserted rows during query processing. */
     DB2_SKIPINSERTED?: CreateCustomSettingsRegistry.Constants.DB2Skipinserted | string;
     /** Configures whether DB2 synchronizes lock release attributes. */
-    DB2_SYNC_RELEASE_LOCK_ATTRIBUTES?: CreateCustomSettingsRegistry.Constants.DB2SyncReleaseLockAttributes | string;
+    DB2_SYNC_RELEASE_LOCK_ATTRIBUTES?:
+      | CreateCustomSettingsRegistry.Constants.DB2SyncReleaseLockAttributes
+      | string;
     /** Configures the types of operations that reuse storage after truncation. */
-    DB2_TRUNCATE_REUSESTORAGE?: CreateCustomSettingsRegistry.Constants.DB2TruncateReusestorage | string;
+    DB2_TRUNCATE_REUSESTORAGE?:
+      | CreateCustomSettingsRegistry.Constants.DB2TruncateReusestorage
+      | string;
     /** Configures whether DB2 uses alternate page cleaning methods. */
-    DB2_USE_ALTERNATE_PAGE_CLEANING?: CreateCustomSettingsRegistry.Constants.DB2UseAlternatePageCleaning | string;
+    DB2_USE_ALTERNATE_PAGE_CLEANING?:
+      | CreateCustomSettingsRegistry.Constants.DB2UseAlternatePageCleaning
+      | string;
     /** Configures whether DB2 view reoptimization values are used. */
     DB2_VIEW_REOPT_VALUES?: CreateCustomSettingsRegistry.Constants.DB2ViewReoptValues | string;
     /** Configures the WLM (Workload Management) settings for DB2 (not specified in values). */

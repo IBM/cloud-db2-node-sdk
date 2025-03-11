@@ -28,12 +28,12 @@ export type SdkHeaders = {
  *
  * If you plan to gather metrics for your SDK, the User-Agent header value must
  * be a string similar to the following:
- * my-node-sdk/0.0.1 (lang=node.js; os.name=Linux; os.version=19.3.0; node.version=v10.15.3)
+ * cloud-db2-node-sdk/0.1.0 (lang=node.js; os.name=Linux; os.version=19.3.0; node.version=v10.15.3)
  *
  * In the example above, the analytics tool will parse the user-agent header and
  * use the following properties:
- * "my-node-sdk" - the name of your sdk
- * "0.0.1"- the version of your sdk
+ * "cloud-db2-node-sdk" - the name of your sdk
+ * "0.1.0"- the version of your sdk
  * "lang=node.js" - the language of the current sdk
  * "os.name=Linux; os.version=19.3.0; node.version=v10.15.3" - system information
  *

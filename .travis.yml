@@ -29,4 +29,4 @@ jobs:
       language: node_js
       node_js: 22
       script:
-        - npm run semantic-release
+        - npx semantic-release

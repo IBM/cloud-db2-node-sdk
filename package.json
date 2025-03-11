@@ -1,6 +1,6 @@
 {
   "name": "ibm-cloud-db2",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "IBM Cloud Db2 SaaS Node SDK",
   "repository": {
     "type": "git",

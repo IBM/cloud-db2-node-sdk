@@ -1,22 +1,32 @@
 language: node_js
 
-sudo: false
+dist: jammy
 
-node_js:
-  - 12
-  - 14
+cache:
+  npm: false
 
+stages:
+  - name: Build-Test
+  - name: Semantic-Release
+    if: (branch = main) AND (type IN (push, api)) AND (fork = false)
+
+# Default "script" step.
 script:
-  - npm --version
-  - npm run build
-  - npm run test-unit-travis || travis_terminate 1
-  - npm run lint
-  - npm run check-packages
+- npm run build
+- npm run test-unit-travis || travis_terminate 1
+- npm run lint
+- npm run check-packages
 
-deploy:
-  - provider: script
-    skip_cleanup: true
-    script: npx semantic-release
-    on:
-      node: 14
-      branch: main
+jobs:
+  include:
+    - stage: Build-Test
+      language: node_js
+      node_js: 18
+    - node_js: 20
+    - node_js: 22
+
+    - stage: Semantic-Release
+      language: node_js
+      node_js: 22
+      script:
+        - npx semantic-release

@@ -79,10 +79,8 @@ describe('Db2saasV1', () => {
     // begin-get_db2_saas_connection_info
 
     const params = {
-      deploymentId:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A69db420f-33d5-4953-8bd8-1950abd356f6%3A%3A',
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      deploymentId: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A69db420f-33d5-4953-8bd8-1950abd356f6%3A%3A',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
     };
 
     let res;
@@ -118,8 +116,7 @@ describe('Db2saasV1', () => {
     };
 
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
       ipAddresses: [ipAddressModel],
     };
 
@@ -148,8 +145,7 @@ describe('Db2saasV1', () => {
     // begin-get_db2_saas_allowlist
 
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
     };
 
     let res;
@@ -185,8 +181,7 @@ describe('Db2saasV1', () => {
     };
 
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
       id: 'test-user',
       iam: false,
       ibmid: 'test-ibm-id',
@@ -223,8 +218,7 @@ describe('Db2saasV1', () => {
     // begin-get_db2_saas_user
 
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
     };
 
     let res;
@@ -236,6 +230,52 @@ describe('Db2saasV1', () => {
     }
 
     // end-get_db2_saas_user
+  });
+
+  test('putDb2SaasUser request example', async () => {
+    consoleLogMock.mockImplementation((output) => {
+      originalLog(output);
+    });
+    consoleWarnMock.mockImplementation((output) => {
+      // if an error occurs, display the message and then fail the test
+      originalWarn(output);
+      expect(true).toBeFalsy();
+    });
+
+    originalLog('putDb2SaasUser() result:');
+    // begin-put_db2_saas_user
+
+    // Request models needed by this operation.
+
+    // UpdateUserAuthentication
+    const updateUserAuthenticationModel = {
+      method: 'internal',
+      policy_id: 'Default',
+    };
+
+    const params = {
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      id: 'test-user',
+      newId: 'test-user',
+      newIam: false,
+      newIbmid: 'test-ibm-id',
+      newName: 'test_user',
+      newPassword: 'dEkMc43@gfAPl!867^dSbu',
+      newRole: 'bluuser',
+      newEmail: 'test_user@mycompany.com',
+      newLocked: 'no',
+      newAuthentication: updateUserAuthenticationModel,
+    };
+
+    let res;
+    try {
+      res = await db2saasService.putDb2SaasUser(params);
+      console.log(JSON.stringify(res.result, null, 2));
+    } catch (err) {
+      console.warn(err);
+    }
+
+    // end-put_db2_saas_user
   });
 
   test('getbyidDb2SaasUser request example', async () => {
@@ -252,8 +292,8 @@ describe('Db2saasV1', () => {
     // begin-getbyid_db2_saas_user
 
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      id: 'test-user',
     };
 
     let res;
@@ -281,8 +321,7 @@ describe('Db2saasV1', () => {
     // begin-put_db2_saas_autoscale
 
     const params = {
-      xDbProfile:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
+      xDbProfile: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
     };
 
     let res;
@@ -310,8 +349,7 @@ describe('Db2saasV1', () => {
     // begin-get_db2_saas_autoscale
 
     const params = {
-      xDbProfile:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
+      xDbProfile: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
     };
 
     let res;
@@ -339,8 +377,7 @@ describe('Db2saasV1', () => {
     // begin-post_db2_saas_db_configuration
 
     const params = {
-      xDbProfile:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
+      xDbProfile: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
     };
 
     let res;
@@ -392,8 +429,7 @@ describe('Db2saasV1', () => {
     // begin-get_db2_saas_backup
 
     const params = {
-      xDbProfile:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
+      xDbProfile: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
     };
 
     let res;
@@ -421,8 +457,7 @@ describe('Db2saasV1', () => {
     // begin-post_db2_saas_backup
 
     const params = {
-      xDbProfile:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
+      xDbProfile: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
     };
 
     let res;
@@ -446,19 +481,15 @@ describe('Db2saasV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('deleteDb2SaasUser() result:');
     // begin-delete_db2_saas_user
 
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
       id: 'test-user',
     };
 
-    let res;
     try {
-      res = await db2saasService.deleteDb2SaasUser(params);
-      console.log(JSON.stringify(res.result, null, 2));
+      await db2saasService.deleteDb2SaasUser(params);
     } catch (err) {
       console.warn(err);
     }

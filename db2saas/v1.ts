@@ -15,12 +15,13 @@
  */
 
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.96.0-d6dec9d7-20241008-212902
+ * IBM OpenAPI SDK Code Generator Version: 3.106.0-09823488-20250707-071701
  */
 
 import * as extend from 'extend';
 import { IncomingHttpHeaders, OutgoingHttpHeaders } from 'http';
 import {
+  AbortSignal,
   Authenticator,
   BaseService,
   UserOptions,
@@ -43,7 +44,9 @@ class Db2saasV1 extends BaseService {
 
   static PARAMETERIZED_SERVICE_URL: string = 'https://{region}.db2.saas.ibm.com/dbapi/v4';
 
-  private static defaultUrlVariables = new Map([['region', 'us-south']]);
+  private static defaultUrlVariables = new Map([
+    ['region', 'us-south'],
+  ]);
 
   /**
    * Constructs a service URL by formatting the parameterized service URL.
@@ -61,8 +64,8 @@ class Db2saasV1 extends BaseService {
    */
   static constructServiceUrl(providedUrlVariables: Map<string, string> | null): string {
     return constructServiceUrl(
-      Db2saasV1.PARAMETERIZED_SERVICE_URL,
-      Db2saasV1.defaultUrlVariables,
+      Db2saasV1.PARAMETERIZED_SERVICE_URL, 
+      Db2saasV1.defaultUrlVariables, 
       providedUrlVariables
     );
   }
@@ -137,7 +140,7 @@ class Db2saasV1 extends BaseService {
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessConnectionInfo>> {
     const _params = { ...params };
     const _requiredParams = ['deploymentId', 'xDeploymentId'];
-    const _validParams = ['deploymentId', 'xDeploymentId', 'headers'];
+    const _validParams = ['deploymentId', 'xDeploymentId', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -163,12 +166,16 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
             'x-deployment-id': _params.xDeploymentId,
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -192,7 +199,7 @@ class Db2saasV1 extends BaseService {
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessPostAllowedlistIPs>> {
     const _params = { ...params };
     const _requiredParams = ['xDeploymentId', 'ipAddresses'];
-    const _validParams = ['xDeploymentId', 'ipAddresses', 'headers'];
+    const _validParams = ['xDeploymentId', 'ipAddresses', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -214,6 +221,7 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -221,6 +229,9 @@ class Db2saasV1 extends BaseService {
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -240,7 +251,7 @@ class Db2saasV1 extends BaseService {
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessGetAllowlistIPs>> {
     const _params = { ...params };
     const _requiredParams = ['xDeploymentId'];
-    const _validParams = ['xDeploymentId', 'headers'];
+    const _validParams = ['xDeploymentId', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -257,12 +268,16 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
             'x-deployment-id': _params.xDeploymentId,
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -293,31 +308,8 @@ class Db2saasV1 extends BaseService {
     params: Db2saasV1.PostDb2SaasUserParams
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessUserResponse>> {
     const _params = { ...params };
-    const _requiredParams = [
-      'xDeploymentId',
-      'id',
-      'iam',
-      'ibmid',
-      'name',
-      'password',
-      'role',
-      'email',
-      'locked',
-      'authentication',
-    ];
-    const _validParams = [
-      'xDeploymentId',
-      'id',
-      'iam',
-      'ibmid',
-      'name',
-      'password',
-      'role',
-      'email',
-      'locked',
-      'authentication',
-      'headers',
-    ];
+    const _requiredParams = ['xDeploymentId', 'id', 'iam', 'ibmid', 'name', 'password', 'role', 'email', 'locked', 'authentication'];
+    const _validParams = ['xDeploymentId', 'id', 'iam', 'ibmid', 'name', 'password', 'role', 'email', 'locked', 'authentication', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -347,6 +339,7 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -354,6 +347,9 @@ class Db2saasV1 extends BaseService {
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -373,7 +369,7 @@ class Db2saasV1 extends BaseService {
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessGetUserInfo>> {
     const _params = { ...params };
     const _requiredParams = ['xDeploymentId'];
-    const _validParams = ['xDeploymentId', 'headers'];
+    const _validParams = ['xDeploymentId', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -390,12 +386,91 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
             'x-deployment-id': _params.xDeploymentId,
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Update existing user (available only for platform users).
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.xDeploymentId - CRN deployment id.
+   * @param {string} params.id - id of the user.
+   * @param {string} params.newId - The id of the User.
+   * @param {boolean} params.newIam - Indicates if IAM is enabled.
+   * @param {string} params.newIbmid - IBM ID of the User.
+   * @param {string} params.newName - The name of the User.
+   * @param {string} params.newPassword - Password of the User.
+   * @param {string} params.newRole - Role of the User.
+   * @param {string} params.newEmail - Email of the User.
+   * @param {string} params.newLocked - Indicates if the account is locked.
+   * @param {UpdateUserAuthentication} params.newAuthentication -
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<Db2saasV1.Response<Db2saasV1.SuccessUserResponse>>}
+   */
+  public putDb2SaasUser(
+    params: Db2saasV1.PutDb2SaasUserParams
+  ): Promise<Db2saasV1.Response<Db2saasV1.SuccessUserResponse>> {
+    const _params = { ...params };
+    const _requiredParams = ['xDeploymentId', 'id', 'newId', 'newIam', 'newIbmid', 'newName', 'newPassword', 'newRole', 'newEmail', 'newLocked', 'newAuthentication'];
+    const _validParams = ['xDeploymentId', 'id', 'newId', 'newIam', 'newIbmid', 'newName', 'newPassword', 'newRole', 'newEmail', 'newLocked', 'newAuthentication', 'signal', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const body = {
+      'id': _params.newId,
+      'iam': _params.newIam,
+      'ibmid': _params.newIbmid,
+      'name': _params.newName,
+      'password': _params.newPassword,
+      'role': _params.newRole,
+      'email': _params.newEmail,
+      'locked': _params.newLocked,
+      'authentication': _params.newAuthentication,
+    };
+
+    const path = {
+      'id': _params.id,
+    };
+
+    const sdkHeaders = getSdkHeaders(Db2saasV1.DEFAULT_SERVICE_NAME, 'v1', 'putDb2SaasUser');
+
+    const parameters = {
+      options: {
+        url: '/users/{id}',
+        method: 'PUT',
+        body,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          this.baseOptions.headers,
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'x-deployment-id': _params.xDeploymentId,
+          },
+          _params.headers
+        ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -409,14 +484,14 @@ class Db2saasV1 extends BaseService {
    * @param {string} params.xDeploymentId - CRN deployment id.
    * @param {string} params.id - id of the user.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<Db2saasV1.Response<Db2saasV1.JsonObject>>}
+   * @returns {Promise<Db2saasV1.Response<Db2saasV1.EmptyObject>>}
    */
   public deleteDb2SaasUser(
     params: Db2saasV1.DeleteDb2SaasUserParams
-  ): Promise<Db2saasV1.Response<Db2saasV1.JsonObject>> {
+  ): Promise<Db2saasV1.Response<Db2saasV1.EmptyObject>> {
     const _params = { ...params };
     const _requiredParams = ['xDeploymentId', 'id'];
-    const _validParams = ['xDeploymentId', 'id', 'headers'];
+    const _validParams = ['xDeploymentId', 'id', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -438,12 +513,15 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
-            'Accept': 'application/json',
             'x-deployment-id': _params.xDeploymentId,
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -455,6 +533,7 @@ class Db2saasV1 extends BaseService {
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.xDeploymentId - CRN deployment id.
+   * @param {string} params.id - id of the user.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<Db2saasV1.Response<Db2saasV1.SuccessGetUserByID>>}
    */
@@ -462,30 +541,39 @@ class Db2saasV1 extends BaseService {
     params: Db2saasV1.GetbyidDb2SaasUserParams
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessGetUserByID>> {
     const _params = { ...params };
-    const _requiredParams = ['xDeploymentId'];
-    const _validParams = ['xDeploymentId', 'headers'];
+    const _requiredParams = ['xDeploymentId', 'id'];
+    const _validParams = ['xDeploymentId', 'id', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
     }
 
+    const path = {
+      'id': _params.id,
+    };
+
     const sdkHeaders = getSdkHeaders(Db2saasV1.DEFAULT_SERVICE_NAME, 'v1', 'getbyidDb2SaasUser');
 
     const parameters = {
       options: {
-        url: '/users/bluadmin',
+        url: '/users/{id}',
         method: 'GET',
+        path,
       },
       defaultOptions: extend(true, {}, this.baseOptions, {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
             'x-deployment-id': _params.xDeploymentId,
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -524,6 +612,7 @@ class Db2saasV1 extends BaseService {
       'autoScalingOverTimePeriod',
       'autoScalingPauseLimit',
       'autoScalingAllowPlanLimit',
+      'signal',
       'headers',
     ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
@@ -551,6 +640,7 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -558,6 +648,9 @@ class Db2saasV1 extends BaseService {
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -577,7 +670,7 @@ class Db2saasV1 extends BaseService {
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessAutoScaling>> {
     const _params = { ...params };
     const _requiredParams = ['xDbProfile'];
-    const _validParams = ['xDbProfile', 'headers'];
+    const _validParams = ['xDbProfile', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -594,12 +687,16 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
             'x-db-profile': _params.xDbProfile,
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -626,7 +723,7 @@ class Db2saasV1 extends BaseService {
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessPostCustomSettings>> {
     const _params = { ...params };
     const _requiredParams = ['xDbProfile'];
-    const _validParams = ['xDbProfile', 'registry', 'db', 'dbm', 'headers'];
+    const _validParams = ['xDbProfile', 'registry', 'db', 'dbm', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -654,6 +751,7 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -661,6 +759,9 @@ class Db2saasV1 extends BaseService {
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -679,17 +780,13 @@ class Db2saasV1 extends BaseService {
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessTuneableParams>> {
     const _params = { ...params };
     const _requiredParams = [];
-    const _validParams = ['headers'];
+    const _validParams = ['signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
     }
 
-    const sdkHeaders = getSdkHeaders(
-      Db2saasV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'getDb2SaasTuneableParam'
-    );
+    const sdkHeaders = getSdkHeaders(Db2saasV1.DEFAULT_SERVICE_NAME, 'v1', 'getDb2SaasTuneableParam');
 
     const parameters = {
       options: {
@@ -700,11 +797,15 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -727,7 +828,7 @@ class Db2saasV1 extends BaseService {
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessGetBackups>> {
     const _params = { ...params };
     const _requiredParams = ['xDbProfile'];
-    const _validParams = ['xDbProfile', 'headers'];
+    const _validParams = ['xDbProfile', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -744,12 +845,16 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
             'x-db-profile': _params.xDbProfile,
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -769,7 +874,7 @@ class Db2saasV1 extends BaseService {
   ): Promise<Db2saasV1.Response<Db2saasV1.SuccessCreateBackup>> {
     const _params = { ...params };
     const _requiredParams = ['xDbProfile'];
-    const _validParams = ['xDbProfile', 'headers'];
+    const _validParams = ['xDbProfile', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -786,12 +891,16 @@ class Db2saasV1 extends BaseService {
         headers: extend(
           true,
           sdkHeaders,
+          this.baseOptions.headers,
           {
             'Accept': 'application/json',
             'x-db-profile': _params.xDbProfile,
           },
           _params.headers
         ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
       }),
     };
 
@@ -827,33 +936,35 @@ namespace Db2saasV1 {
    * request interfaces
    ************************/
 
+   interface DefaultParams {
+     headers?: OutgoingHttpHeaders;
+     signal?: AbortSignal;
+   }
+
   /** Parameters for the `getDb2SaasConnectionInfo` operation. */
-  export interface GetDb2SaasConnectionInfoParams {
+  export interface GetDb2SaasConnectionInfoParams extends DefaultParams {
     /** Encoded CRN deployment id. */
     deploymentId: string;
     /** CRN deployment id. */
     xDeploymentId: string;
-    headers?: OutgoingHttpHeaders;
   }
 
   /** Parameters for the `postDb2SaasAllowlist` operation. */
-  export interface PostDb2SaasAllowlistParams {
+  export interface PostDb2SaasAllowlistParams extends DefaultParams {
     /** CRN deployment id. */
     xDeploymentId: string;
     /** List of IP addresses. */
     ipAddresses: IpAddress[];
-    headers?: OutgoingHttpHeaders;
   }
 
   /** Parameters for the `getDb2SaasAllowlist` operation. */
-  export interface GetDb2SaasAllowlistParams {
+  export interface GetDb2SaasAllowlistParams extends DefaultParams {
     /** CRN deployment id. */
     xDeploymentId: string;
-    headers?: OutgoingHttpHeaders;
   }
 
   /** Parameters for the `postDb2SaasUser` operation. */
-  export interface PostDb2SaasUserParams {
+  export interface PostDb2SaasUserParams extends DefaultParams {
     /** CRN deployment id. */
     xDeploymentId: string;
     /** The id of the User. */
@@ -873,7 +984,6 @@ namespace Db2saasV1 {
     /** Indicates if the account is locked. */
     locked: PostDb2SaasUserConstants.Locked | string;
     authentication: CreateUserAuthentication;
-    headers?: OutgoingHttpHeaders;
   }
 
   /** Constants for the `postDb2SaasUser` operation. */
@@ -891,30 +1001,68 @@ namespace Db2saasV1 {
   }
 
   /** Parameters for the `getDb2SaasUser` operation. */
-  export interface GetDb2SaasUserParams {
+  export interface GetDb2SaasUserParams extends DefaultParams {
     /** CRN deployment id. */
     xDeploymentId: string;
-    headers?: OutgoingHttpHeaders;
   }
 
-  /** Parameters for the `deleteDb2SaasUser` operation. */
-  export interface DeleteDb2SaasUserParams {
+  /** Parameters for the `putDb2SaasUser` operation. */
+  export interface PutDb2SaasUserParams extends DefaultParams {
     /** CRN deployment id. */
     xDeploymentId: string;
     /** id of the user. */
     id: string;
-    headers?: OutgoingHttpHeaders;
+    /** The id of the User. */
+    newId: string;
+    /** Indicates if IAM is enabled. */
+    newIam: boolean;
+    /** IBM ID of the User. */
+    newIbmid: string;
+    /** The name of the User. */
+    newName: string;
+    /** Password of the User. */
+    newPassword: string;
+    /** Role of the User. */
+    newRole: PutDb2SaasUserConstants.Role | string;
+    /** Email of the User. */
+    newEmail: string;
+    /** Indicates if the account is locked. */
+    newLocked: PutDb2SaasUserConstants.Locked | string;
+    newAuthentication: UpdateUserAuthentication;
+  }
+
+  /** Constants for the `putDb2SaasUser` operation. */
+  export namespace PutDb2SaasUserConstants {
+    /** Role of the User. */
+    export enum Role {
+      BLUADMIN = 'bluadmin',
+      BLUUSER = 'bluuser',
+    }
+    /** Indicates if the account is locked. */
+    export enum Locked {
+      YES = 'yes',
+      NO = 'no',
+    }
+  }
+
+  /** Parameters for the `deleteDb2SaasUser` operation. */
+  export interface DeleteDb2SaasUserParams extends DefaultParams {
+    /** CRN deployment id. */
+    xDeploymentId: string;
+    /** id of the user. */
+    id: string;
   }
 
   /** Parameters for the `getbyidDb2SaasUser` operation. */
-  export interface GetbyidDb2SaasUserParams {
+  export interface GetbyidDb2SaasUserParams extends DefaultParams {
     /** CRN deployment id. */
     xDeploymentId: string;
-    headers?: OutgoingHttpHeaders;
+    /** id of the user. */
+    id: string;
   }
 
   /** Parameters for the `putDb2SaasAutoscale` operation. */
-  export interface PutDb2SaasAutoscaleParams {
+  export interface PutDb2SaasAutoscaleParams extends DefaultParams {
     /** Encoded CRN deployment id. */
     xDbProfile: string;
     /** Indicates if automatic scaling is enabled or not. */
@@ -927,7 +1075,6 @@ namespace Db2saasV1 {
     autoScalingPauseLimit?: number;
     /** Indicates the maximum number of scaling actions that are allowed within a specified time period. */
     autoScalingAllowPlanLimit?: PutDb2SaasAutoscaleConstants.AutoScalingAllowPlanLimit | string;
-    headers?: OutgoingHttpHeaders;
   }
 
   /** Constants for the `putDb2SaasAutoscale` operation. */
@@ -945,14 +1092,13 @@ namespace Db2saasV1 {
   }
 
   /** Parameters for the `getDb2SaasAutoscale` operation. */
-  export interface GetDb2SaasAutoscaleParams {
+  export interface GetDb2SaasAutoscaleParams extends DefaultParams {
     /** Encoded CRN deployment id. */
     xDbProfile: string;
-    headers?: OutgoingHttpHeaders;
   }
 
   /** Parameters for the `postDb2SaasDbConfiguration` operation. */
-  export interface PostDb2SaasDbConfigurationParams {
+  export interface PostDb2SaasDbConfigurationParams extends DefaultParams {
     /** Encoded CRN deployment id. */
     xDbProfile: string;
     /** registry for db2 related configuration settings/configurations. */
@@ -961,26 +1107,22 @@ namespace Db2saasV1 {
     db?: CreateCustomSettingsDb;
     /** Container for general database management settings. */
     dbm?: CreateCustomSettingsDbm;
-    headers?: OutgoingHttpHeaders;
   }
 
   /** Parameters for the `getDb2SaasTuneableParam` operation. */
-  export interface GetDb2SaasTuneableParamParams {
-    headers?: OutgoingHttpHeaders;
+  export interface GetDb2SaasTuneableParamParams extends DefaultParams {
   }
 
   /** Parameters for the `getDb2SaasBackup` operation. */
-  export interface GetDb2SaasBackupParams {
+  export interface GetDb2SaasBackupParams extends DefaultParams {
     /** Encoded CRN deployment id. */
     xDbProfile: string;
-    headers?: OutgoingHttpHeaders;
   }
 
   /** Parameters for the `postDb2SaasBackup` operation. */
-  export interface PostDb2SaasBackupParams {
+  export interface PostDb2SaasBackupParams extends DefaultParams {
     /** Encoded CRN deployment id. */
     xDbProfile: string;
-    headers?: OutgoingHttpHeaders;
   }
 
   /*************************
@@ -1908,34 +2050,28 @@ namespace Db2saasV1 {
     DB2STMM?: CreateCustomSettingsRegistry.Constants.DB2Stmm | string;
     /** Configures the alternate authorization behavior for DB2. */
     DB2_ALTERNATE_AUTHZ_BEHAVIOUR?:
-      | CreateCustomSettingsRegistry.Constants.DB2AlternateAuthzBehaviour
-      | string;
+    | CreateCustomSettingsRegistry.Constants.DB2AlternateAuthzBehaviour
+    | string;
     /** Configures how DB2 handles anti-joins. */
     DB2_ANTIJOIN?: CreateCustomSettingsRegistry.Constants.DB2Antijoin | string;
     /** Configures whether DB2 asynchronous table scanning (ATS) is enabled. */
     DB2_ATS_ENABLE?: CreateCustomSettingsRegistry.Constants.DB2AtsEnable | string;
     /** Configures whether deferred prepare semantics are enabled in DB2. */
     DB2_DEFERRED_PREPARE_SEMANTICS?:
-      | CreateCustomSettingsRegistry.Constants.DB2DeferredPrepareSemantics
-      | string;
+    | CreateCustomSettingsRegistry.Constants.DB2DeferredPrepareSemantics
+    | string;
     /** Configures whether uncommitted data is evaluated by DB2. */
     DB2_EVALUNCOMMITTED?: CreateCustomSettingsRegistry.Constants.DB2Evaluncommitted | string;
     /** Configures extended optimization in DB2 (not specified in values). */
     DB2_EXTENDED_OPTIMIZATION?: string;
     /** Configures the default percentage of free space for DB2 indexes. */
-    DB2_INDEX_PCTFREE_DEFAULT?:
-      | CreateCustomSettingsRegistry.Constants.DB2IndexPctfreeDefault
-      | string;
+    DB2_INDEX_PCTFREE_DEFAULT?: CreateCustomSettingsRegistry.Constants.DB2IndexPctfreeDefault | string;
     /** Configures whether in-list queries are converted to nested loop joins. */
     DB2_INLIST_TO_NLJN?: CreateCustomSettingsRegistry.Constants.DB2InlistToNljn | string;
     /** Configures whether DB2 minimizes list prefetching for queries. */
-    DB2_MINIMIZE_LISTPREFETCH?:
-      | CreateCustomSettingsRegistry.Constants.DB2MinimizeListprefetch
-      | string;
+    DB2_MINIMIZE_LISTPREFETCH?: CreateCustomSettingsRegistry.Constants.DB2MinimizeListprefetch | string;
     /** Configures the number of entries for DB2 object tables. */
-    DB2_OBJECT_TABLE_ENTRIES?:
-      | CreateCustomSettingsRegistry.Constants.DB2ObjectTableEntries
-      | string;
+    DB2_OBJECT_TABLE_ENTRIES?: CreateCustomSettingsRegistry.Constants.DB2ObjectTableEntries | string;
     /** Configures whether DB2's optimizer profile is enabled. */
     DB2_OPTPROFILE?: CreateCustomSettingsRegistry.Constants.DB2Optprofile | string;
     /** Configures the logging of optimizer statistics (not specified in values). */
@@ -1953,17 +2089,11 @@ namespace Db2saasV1 {
     /** Configures whether DB2 skips inserted rows during query processing. */
     DB2_SKIPINSERTED?: CreateCustomSettingsRegistry.Constants.DB2Skipinserted | string;
     /** Configures whether DB2 synchronizes lock release attributes. */
-    DB2_SYNC_RELEASE_LOCK_ATTRIBUTES?:
-      | CreateCustomSettingsRegistry.Constants.DB2SyncReleaseLockAttributes
-      | string;
+    DB2_SYNC_RELEASE_LOCK_ATTRIBUTES?: CreateCustomSettingsRegistry.Constants.DB2SyncReleaseLockAttributes | string;
     /** Configures the types of operations that reuse storage after truncation. */
-    DB2_TRUNCATE_REUSESTORAGE?:
-      | CreateCustomSettingsRegistry.Constants.DB2TruncateReusestorage
-      | string;
+    DB2_TRUNCATE_REUSESTORAGE?: CreateCustomSettingsRegistry.Constants.DB2TruncateReusestorage | string;
     /** Configures whether DB2 uses alternate page cleaning methods. */
-    DB2_USE_ALTERNATE_PAGE_CLEANING?:
-      | CreateCustomSettingsRegistry.Constants.DB2UseAlternatePageCleaning
-      | string;
+    DB2_USE_ALTERNATE_PAGE_CLEANING?: CreateCustomSettingsRegistry.Constants.DB2UseAlternatePageCleaning | string;
     /** Configures whether DB2 view reoptimization values are used. */
     DB2_VIEW_REOPT_VALUES?: CreateCustomSettingsRegistry.Constants.DB2ViewReoptValues | string;
     /** Configures the WLM (Workload Management) settings for DB2 (not specified in values). */
@@ -2619,6 +2749,16 @@ namespace Db2saasV1 {
     /** Authentication method. */
     method: string;
     /** Policy ID of authentication. */
+    policy_id: string;
+  }
+
+  /**
+   * UpdateUserAuthentication.
+   */
+  export interface UpdateUserAuthentication {
+    /** Authentication method. */
+    method: string;
+    /** Authentication policy ID. */
     policy_id: string;
   }
 }

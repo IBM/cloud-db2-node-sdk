@@ -47,10 +47,8 @@ describe('Db2saasV1_integration', () => {
 
   test('getDb2SaasConnectionInfo()', async () => {
     const params = {
-      deploymentId:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A69db420f-33d5-4953-8bd8-1950abd356f6%3A%3A',
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      deploymentId: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A69db420f-33d5-4953-8bd8-1950abd356f6%3A%3A',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
     };
 
     const res = await db2saasService.getDb2SaasConnectionInfo(params);
@@ -69,8 +67,7 @@ describe('Db2saasV1_integration', () => {
     };
 
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
       ipAddresses: [ipAddressModel],
     };
 
@@ -82,8 +79,7 @@ describe('Db2saasV1_integration', () => {
 
   test('getDb2SaasAllowlist()', async () => {
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
     };
 
     const res = await db2saasService.getDb2SaasAllowlist(params);
@@ -102,8 +98,7 @@ describe('Db2saasV1_integration', () => {
     };
 
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
       id: 'test-user',
       iam: false,
       ibmid: 'test-ibm-id',
@@ -123,8 +118,7 @@ describe('Db2saasV1_integration', () => {
 
   test('getDb2SaasUser()', async () => {
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
     };
 
     const res = await db2saasService.getDb2SaasUser(params);
@@ -133,10 +127,39 @@ describe('Db2saasV1_integration', () => {
     expect(res.result).toBeDefined();
   });
 
+  test('putDb2SaasUser()', async () => {
+    // Request models needed by this operation.
+
+    // UpdateUserAuthentication
+    const updateUserAuthenticationModel = {
+      method: 'internal',
+      policy_id: 'Default',
+    };
+
+    const params = {
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      id: 'test-user',
+      newId: 'test-user',
+      newIam: false,
+      newIbmid: 'test-ibm-id',
+      newName: 'test_user',
+      newPassword: 'dEkMc43@gfAPl!867^dSbu',
+      newRole: 'bluuser',
+      newEmail: 'test_user@mycompany.com',
+      newLocked: 'no',
+      newAuthentication: updateUserAuthenticationModel,
+    };
+
+    const res = await db2saasService.putDb2SaasUser(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
   test('getbyidDb2SaasUser()', async () => {
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      id: 'test-user',
     };
 
     const res = await db2saasService.getbyidDb2SaasUser(params);
@@ -147,8 +170,7 @@ describe('Db2saasV1_integration', () => {
 
   test('putDb2SaasAutoscale()', async () => {
     const params = {
-      xDbProfile:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
+      xDbProfile: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
       autoScalingThreshold: 90,
       autoScalingPauseLimit: 70,
     };
@@ -161,8 +183,7 @@ describe('Db2saasV1_integration', () => {
 
   test('getDb2SaasAutoscale()', async () => {
     const params = {
-      xDbProfile:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
+      xDbProfile: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
     };
 
     const res = await db2saasService.getDb2SaasAutoscale(params);
@@ -349,8 +370,7 @@ describe('Db2saasV1_integration', () => {
     };
 
     const params = {
-      xDbProfile:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
+      xDbProfile: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
     };
 
     const res = await db2saasService.postDb2SaasDbConfiguration(params);
@@ -368,8 +388,7 @@ describe('Db2saasV1_integration', () => {
 
   test('getDb2SaasBackup()', async () => {
     const params = {
-      xDbProfile:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
+      xDbProfile: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
     };
 
     const res = await db2saasService.getDb2SaasBackup(params);
@@ -380,8 +399,7 @@ describe('Db2saasV1_integration', () => {
 
   test('postDb2SaasBackup()', async () => {
     const params = {
-      xDbProfile:
-        'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
+      xDbProfile: 'crn%3Av1%3Astaging%3Apublic%3Adashdb-for-transactions%3Aus-south%3Aa%2Fe7e3e87b512f474381c0684a5ecbba03%3A39269573-e43f-43e8-8b93-09f44c2ff875%3A%3A',
     };
 
     const res = await db2saasService.postDb2SaasBackup(params);
@@ -392,14 +410,13 @@ describe('Db2saasV1_integration', () => {
 
   test('deleteDb2SaasUser()', async () => {
     const params = {
-      xDeploymentId:
-        'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
+      xDeploymentId: 'crn:v1:staging:public:dashdb-for-transactions:us-south:a/e7e3e87b512f474381c0684a5ecbba03:69db420f-33d5-4953-8bd8-1950abd356f6::',
       id: 'test-user',
     };
 
     const res = await db2saasService.deleteDb2SaasUser(params);
     expect(res).toBeDefined();
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(204);
     expect(res.result).toBeDefined();
   });
 });

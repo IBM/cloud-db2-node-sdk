@@ -3,7 +3,7 @@
 <!--
 [![npm-version](https://img.shields.io/npm/v/CloudEngineering/node-sdk-template.svg)](https://www.npmjs.com/package/node-sdk-template)
 -->
-# IBM Cloud Db2 SaaS Node.js SDK
+# IBM Cloud Db2 SaaS Node.js SDK Version 0.2.0
 Node.js client library to interact with various [Cloud Db2 SaaS Node SDK APIs](https://cloud.ibm.com/docs?tab=api-docs?category=<service-category>).
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
